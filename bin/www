@@ -8,6 +8,17 @@ var app = require('../app');
 var debug = require('debug')('project-jewelry:server');
 var http = require('http');
 
+const fs = require('fs');
+const https = require('https');
+
+let options = {
+    key : fs.readFileSync('./config/key.pem'),
+    cert : fs.readFileSync('./config/cert.pem')
+};
+
+const secureServer = https.createServer(options, app);
+secureServer.listen(3001);
+
 /**
  * Get port from environment and store in Express.
  */
