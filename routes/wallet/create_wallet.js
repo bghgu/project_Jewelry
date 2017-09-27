@@ -14,7 +14,7 @@ router.get('/', async(req, res, next) => {
     let address = hash.encoding(String(uuid.v4()));
     let private_key = hash.encoding(String(address));
 
-    let merklehash = hash.encoding(String(uuid1 + address));
+    let merklehash = hash.encoding(String(uuid1 + address + date + private_key));
     merklehash = hash.encoding(String(merklehash));
 
     let params = {
@@ -25,17 +25,16 @@ router.get('/', async(req, res, next) => {
             "address": address, //주소
             "balance": 0, //잔액
             "date": date, //만든 날짜
-            "merklehash": merklehash //이번 노드 해쉬값
+            "merklehash": merklehash, //이번 노드 해쉬값,
+            "type" : "create_wallet" //노드 타입
         }
     };
 
-    console.log(params);
-
     await db.put(params, function(err, data) {
         if (err) {
-            console.error("Error JSON", JSON.stringify(err, null, 2));
+            //console.error("Error JSON", JSON.stringify(err, null, 2));
         } else {
-            console.log("PutItem succeeded");
+            //console.log("PutItem succeeded");
             if (previousHash.setPreviousHash(merklehash) == 1) {
                 res.status(201).send({
                     address: address,
