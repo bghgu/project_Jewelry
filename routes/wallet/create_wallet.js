@@ -23,7 +23,7 @@ router.get('/', function(req, res) {
         Item: {
             "sequenceNum": uuid1, //시퀸스 인덱스
             "address": address, //주소
-            "balance": 0, //잔액
+            "balance": 100, //잔액
             "date": date, //만든 날짜
             "type": "create" //노드 타입
         }
@@ -35,7 +35,7 @@ router.get('/', function(req, res) {
             "sequenceNum": uuid1, //시퀸스 인덱스
             "previousblockhash": previousHash.getPreviousHash(), //이전 노드 해쉬값
             "address": address, //주소
-            "balance": 0, //잔액
+            "balance": 100, //잔액
             "date": date, //만든 날짜
             "merklehash": merklehash, //이번 노드 해쉬값,
             "type": "create_wallet" //노드 타입
@@ -60,7 +60,6 @@ router.get('/', function(req, res) {
                         res.status(403).send({
                             message: "FAILED"
                         });
-                        callback(err, null);
                     }
                 }
             });
@@ -81,7 +80,6 @@ router.get('/', function(req, res) {
                         res.status(403).send({
                             message: "FAILED"
                         });
-                        callback(err, null);
                     }
                 }
             });

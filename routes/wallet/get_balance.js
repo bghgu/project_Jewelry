@@ -3,25 +3,26 @@ const router = express.Router();
 const async = require('async');
 const db = require('../../config/db_pool.js');
 
-router.post('/', async(req, res, next) => {
+router.post('/', function(req, res) {
 
     let address = req.body.address;
 
     let params = {
-        TableName: "coin",
+        TableName: "wallet",
         Key: {
-            "address": address,
-            "type": "create_wallet"
+            "address": address
         }
     };
+    console.log(params);
 
-    await db.get(params, function(err, data) {
+    db.query(params, function(err, data) {
         if (err) {
-            //console.error("Error JSON", JSON.stringify(err, null, 2));
+            console.error("Error JSON", JSON.stringify(err, null, 2));
             res.status(403).send({
                 err
             });
         } else {
+            console.log("scan succeeded");
             if (data.Item == undefined) {
                 res.status(404).send({
                     message: "no address"

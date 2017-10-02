@@ -104,7 +104,7 @@ POST | /payment | 송금
 #### 송금 성공
 ```json
 {
-	"message" : "FAILED"
+	"message" : "SUCCESS"
 }
 ```
 #### 보내는 사람 주소 오류
