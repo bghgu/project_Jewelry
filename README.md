@@ -10,7 +10,10 @@ GET | /wallet/create | 지갑 생성
 #### 지갑 생성 성공
 ```json
 {
-    "message" : "SUCCESS"
+    "message" : "SUCCESS",
+    "address" : "X7s160SG8/9dfl7fbaYQXTTQOoC6obiOgnHccC0vv841dvWup14nlLLJa+DVeyAM",
+    "private_key" : "wOicMVWadF0VmZfdseKY71FE+C8QV8t1zLq+n8qq1c/dY4bn4zOBRT8KYosN8xDEE0Dy5JB69k5lxTiOW2ny5GJJJGPSzaM/kKmbWQsTaxw=",
+    "create_date" : "2017-10-02 11:24"
 }
 ```
 #### 지갑 생성 실패
