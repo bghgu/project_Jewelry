@@ -9,8 +9,12 @@ router.post('/', function(req, res) {
 
     let params = {
         TableName: "wallet",
-        Key: {
-            "address": address
+        KeyConditionExpression: "#address = :address",
+        ExpressionAttributeNames: {
+            "#address": "address"
+        },
+        ExpressionAttributeValues: {
+            ":address": address
         }
     };
     console.log(params);
@@ -23,15 +27,13 @@ router.post('/', function(req, res) {
             });
         } else {
             console.log("scan succeeded");
-            if (data.Item == undefined) {
+            if (data.Count == 0) {
                 res.status(404).send({
                     message: "no address"
                 });
             } else {
-                //console.log("getItem succeeded");
                 res.status(200).send({
-                    address: address,
-                    balance: data.Item.balance
+                    balance: data.Items[0].balance
                 });
             }
         }

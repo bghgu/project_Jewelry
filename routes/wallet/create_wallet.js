@@ -25,7 +25,6 @@ router.get('/', function(req, res) {
             "address": address, //주소
             "balance": 100, //잔액
             "date": date, //만든 날짜
-            "type": "create" //노드 타입
         }
     };
     //지갑 생성

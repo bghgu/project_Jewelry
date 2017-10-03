@@ -3,31 +3,35 @@ const router = express.Router();
 const async = require('async');
 const db = require('../../config/db_pool.js');
 
-router.post('/', async(req, res, next) => {
+router.post('/', function(req, res) {
 
     let address = req.body.address;
 
     let params = {
-        TableName: "coin",
-        Key:{
-            "address": address,
-            "type" : "payment"
+        TableName: "block",
+        FilterExpression: "#address = :address",
+        ExpressionAttributeNames: {
+            "#address": "address"
+        },
+        ExpressionAttributeValues: {
+            ":address": address
         }
     };
 
-    await db.get(params, function(err, data) {
+    db.scan(params, function(err, data) {
         if (err) {
-            //console.error("Error JSON", JSON.stringify(err, null, 2));
+            console.error("Error JSON", JSON.stringify(err, null, 2));
             res.status(403).send({
                 err
             });
         } else {
-            if(data.Item == undefined) {
+            console.log("scan succeeded");
+            console.log(data);
+            if (data.Count == 0) {
                 res.status(404).send({
-                    message : "no address"
+                    message: "no address"
                 });
-            }else {
-                //console.log("getItem succeeded");
+            } else {
                 res.status(200).send({
                     data
                 });

@@ -10,8 +10,8 @@ const previousHash = require('../../module/previous_hash.js');
 router.post('/', function(req, res) {
 
     let address = req.body.sendAddress;
-    let amount = req.body.amount;
-    let fee = req.body.fee;
+    let amount = Number(req.body.amount);
+    let fee = Number(req.body.fee);
     let private_key = req.body.private_key;
     let incommingAddress = req.body.incommingAddress;
     let uuid1 = uuid.v1();
@@ -52,7 +52,6 @@ router.post('/', function(req, res) {
             "address": address, //주소
             "balance": sendAddressBalance - amount - fee, //새로운 잔액
             "date": date, //만든 날짜
-            "type": "update" //노드 타입
         }
     };
     //받는 사람 잔액 증가
@@ -60,10 +59,9 @@ router.post('/', function(req, res) {
         TableName: "wallet",
         Item: {
             "sequenceNum": uuid1, //시퀸스 인덱스
-            "address": address, //주소
+            "address": incommingAddress, //주소
             "balance": incommingAddressBalance + amount, //새로운 잔액
             "date": date, //만든 날짜
-            "type": "update" //노드 타입
         }
     };
     //송금 노드 입력
@@ -101,9 +99,9 @@ router.post('/', function(req, res) {
                             message: "NO SENDADDRESS"
                         });
                     }else {
-                        sendAddressBalance = data.Items[0].balance;
+                        sendAddressBalance = (Number(data.Items[0].balance));
                         console.log("sendAddressBalance : " + sendAddressBalance);
-                        if(sendAddressBalance < amount + fee) {
+                        if(sendAddressBalance < Number(amount) + Number(fee)) {
                             console.log("No amount");
                             res.status(403).send({
                                 message: "NO AMOUNT"
@@ -133,7 +131,7 @@ router.post('/', function(req, res) {
                             message: "NO INCOMMINGADDRESS"
                         });
                     }else {
-                        incommingAddressBalance= data.Items[0].balance;
+                        incommingAddressBalance = (Number(data.Items[0].balance));
                         console.log("incommingAddressBalance : " + incommingAddressBalance);
                     }
                     callback(null);
@@ -142,7 +140,8 @@ router.post('/', function(req, res) {
         },
         //보내는 사람 잔액 차감
         function(callback) {
-            params3.Item.balance = sendAddressBalance - amount - fee;
+            params3.Item.balance = Number(sendAddressBalance) - Number(amount) - Number(fee);
+            console.log(params3.Item.balance);
             console.log(params3);
             db.put(params3, function(err, data) {
                 if (err) {
@@ -165,7 +164,8 @@ router.post('/', function(req, res) {
         },
         //받는 사람 잔액 증가
         function(callback) {
-            params4.Item.balance = incommingAddressBalance + amount;
+            params4.Item.balance = Number(incommingAddressBalance) + Number(amount);
+            console.log(params4.Item.balance);
             console.log(params4);
             db.put(params4, function(err, data) {
                 if (err) {
