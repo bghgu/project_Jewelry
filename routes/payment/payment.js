@@ -8,6 +8,7 @@ const hash = require('../../module/hash.js');
 const previousHash = require('../../module/previous_hash.js');
 
 router.post('/', function(req, res) {
+    console.log(req.body);
 
     let address = req.body.sendAddress;
     let amount = Number(req.body.amount);
@@ -87,7 +88,7 @@ router.post('/', function(req, res) {
                 if(err) {
                     console.error("Error JSON", JSON.stringify(err, null, 2));
                     res.status(403).send({
-                        message: "ERROR"
+                        message: "ERROR 1"
                     });
                     callback(err, null);
                 }else {
@@ -119,7 +120,7 @@ router.post('/', function(req, res) {
                 if(err) {
                     console.error("Error JSON", JSON.stringify(err, null, 2));
                     res.status(403).send({
-                        message: "ERROR"
+                        message: "ERROR 2"
                     });
                     callback(err, null);
                 }else {
@@ -147,7 +148,7 @@ router.post('/', function(req, res) {
                 if (err) {
                     console.error("Error JSON", JSON.stringify(err, null, 2));
                     res.status(403).send({
-                        message: "ERROR"
+                        message: "ERROR 3"
                     });
                     callback(err, null);
                 } else {
@@ -156,7 +157,7 @@ router.post('/', function(req, res) {
                         callback(null);
                     } else {
                         res.status(403).send({
-                            message: "ERROR"
+                            message: "ERROR 4"
                         });
                     }
                 }
@@ -171,7 +172,7 @@ router.post('/', function(req, res) {
                 if (err) {
                     console.error("Error JSON", JSON.stringify(err, null, 2));
                     res.status(403).send({
-                        message: "ERROR"
+                        message: "ERROR 5"
                     });
                     callback(err, null);
                 } else {
@@ -180,7 +181,7 @@ router.post('/', function(req, res) {
                         callback(null);
                     } else {
                         res.status(403).send({
-                            message: "ERROR"
+                            message: "ERROR 6"
                         });
                     }
                 }
@@ -192,7 +193,7 @@ router.post('/', function(req, res) {
                 if (err) {
                     console.error("Error JSON", JSON.stringify(err, null, 2));
                     res.status(403).send({
-                        message: "ERROR"
+                        message: "ERROR 7"
                     });
                     callback(err, null);
                 } else {
@@ -201,7 +202,7 @@ router.post('/', function(req, res) {
                         callback(null);
                     } else {
                         res.status(403).send({
-                            message: "ERROR"
+                            message: "ERROR 8"
                         });
                     }
                 }
@@ -219,7 +220,7 @@ router.post('/', function(req, res) {
             });
         }
     });
-
+    
 });
 
 module.exports = router;

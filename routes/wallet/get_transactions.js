@@ -6,7 +6,7 @@ const db = require('../../config/db_pool.js');
 router.post('/', function(req, res) {
 
     let address = req.body.address;
-
+    console.log(req.body);
     let params = {
         TableName: "block",
         FilterExpression: "#address = :address",
@@ -17,7 +17,8 @@ router.post('/', function(req, res) {
             ":address": address
         }
     };
-
+    console.log(address);
+    console.log(params);
     db.scan(params, function(err, data) {
         if (err) {
             console.error("Error JSON", JSON.stringify(err, null, 2));
