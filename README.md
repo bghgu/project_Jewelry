@@ -20,13 +20,24 @@ ERD 다이어그램
 
 <img src="https://github.com/bghgu/project_jewelry/blob/master/image/1.jpg" width="400" height="400">
 
+* 전체 시스템 구성도
+
 <img src="https://github.com/bghgu/project_jewelry/blob/master/image/2.jpg" width="400" height="400">
+
+* `보석 코인` 시스템 구성도
 
 <img src="https://github.com/bghgu/project_jewelry/blob/master/image/3.jpg" width="400" height="400">
 
+* 로그인 및 커뮤니티 서비스 구성도
+* 실제 암호 화폐 시세 정보는 각 암호 화폐 api call을 통해 요청한다.
+
 ![blockchain1.png](https://github.com/bghgu/project_jewelry/blob/master/image/blockchain1.png)
 
+* 블록 체인 개념(체이닝)
+
 ![blockchain2.png](https://github.com/bghgu/project_jewelry/blob/master/image/blockchain2.png)
+
+* 보석 주머니의 블록 체인 구조
 
 ## 시작하기
 
