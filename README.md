@@ -18,11 +18,11 @@ ERD 다이어그램
 
 ## 구성
 
-![1.jpg](https://github.com/bghgu/project_jewelry/blob/master/image/1.jpg)
+![1.jpg](https://github.com/bghgu/project_jewelry/blob/master/image/1.jpg){: width="100" height="100"}
 
-![2.jpg](https://github.com/bghgu/project_jewelry/blob/master/image/2.jpg)
+![2.jpg](https://github.com/bghgu/project_jewelry/blob/master/image/2.jpg){: width="100" height="100"}
 
-![3.jpg](https://github.com/bghgu/project_jewelry/blob/master/image/3.jpg)
+![3.jpg](https://github.com/bghgu/project_jewelry/blob/master/image/3.jpg){: width="100" height="100"}
 
 ![blockchain1.png](https://github.com/bghgu/project_jewelry/blob/master/image/blockchain1.png)
 
