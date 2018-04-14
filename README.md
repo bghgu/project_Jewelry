@@ -14,7 +14,7 @@ API : https://github.com/bghgu/project_jewelry
 
 ![db.png](https://github.com/bghgu/project_jewelry/blob/master/image/db.png)
 
-ERD 다이어그램
+ER 다이어그램
 
 ## 구성
 
